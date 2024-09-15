@@ -1,0 +1,35 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+
+body  {
+    display: flex;
+    flex-direction: column;
+
+    top:0; 
+    left: 0;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    width: 100%;
+    visibility: visible;
+    background-color: white;
+}
+
+
+// // /* Estilos para los elementos enfocados */
+
+// // .p-multiselect:focus {
+// //     border-color: #3182CE; // Color del borde azul al enfocar
+// //     outline: none; // Elimina el borde de enfoque por defecto
+// //     box-shadow: 0 0 5px rgba(49, 130, 206, 0.5); // Efecto de sombra azul al enfocar
+// // }
+.p-multiselect-label-container {
+    overflow: hidden;
+    flex: 1 1 auto;
+    cursor: pointer;
+    display: flex;
+    width: 240px;
+  }

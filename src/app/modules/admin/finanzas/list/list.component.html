@@ -1,0 +1,157 @@
+
+<!-- Pantalla Principal -->
+<div class="flex flex-col min-h-screen flex-auto ">
+  <!-- Encabezado -->
+  <div class="flex flex-col sm:flex-row items-center justify-between p-3 border-b dark:bg-transparent bg-card">
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center font-medium">
+        <a class="whitespace-nowrap text-primary-500">TTrack</a>
+        <div class="flex items-center ml-1 whitespace-nowrap">
+          <mat-icon class="fuse-horizontal-navigation-item-icon" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+          <a class="ml-1 text-primary-500">Manifiestos</a>
+        </div>
+      </div>
+      <div class="mt-2">
+        <h2 class="text-3xl md:text-4xl font-extrabold leading-7 sm:leading-10 truncate">Centro de costos</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col p-2">
+
+  </div>
+  
+<div class="flex flex-col p-6 bg-card ">
+
+
+  <!-- Contenido Principal -->
+ 
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Clientes -->
+      <div class="flex flex-col">
+        <label for="listClientes" class="font-semibold mb-1">Cliente</label>
+        <p-multiSelect 
+          [options]="listClientes" 
+          [(ngModel)]="selectedClientes" 
+          optionLabel="label" 
+          id="listClientes"
+          appendTo="body" 
+          [filter]="true" 
+          class="fixed-multiselect"
+          placeholder="Selección de clientes" />
+      </div>
+
+      <!-- Tipo Servicio -->
+      <div class="flex flex-col">
+        <label for="listvalortabla" class="font-semibold mb-1">Tipo Servicio</label>
+        <p-dropdown  
+          name="listvalortabla" 
+          id="listvalortabla" 
+          [options]="listValorTabla"
+          [(ngModel)]="selectedValorTabla"
+          placeholder="Selección de Tipo de Servicio" 
+          class="w-full"
+           />
+      </div>
+
+      <!-- Inicio Recojo -->
+      <div class="flex flex-col">
+        <label for="dateInicio" class="font-semibold mb-1">Inicio Recojo</label>
+        <p-calendar 
+          id="dateInicio"
+          [(ngModel)]="dateInicio" 
+          dateFormat="dd.mm.yy" 
+          />
+      </div>
+
+      <!-- Fin Recojo -->
+      <div class="flex flex-col">
+        <label for="dateFin" class="font-semibold mb-1">Fin Recojo</label>
+        <p-calendar 
+          id="dateFin"
+          [(ngModel)]="dateFin" 
+          dateFormat="dd.mm.yy" 
+          />
+      </div>
+
+      <!-- Botones -->
+      <div class="flex flex-col md:col-span-2 lg:col-span-4 mt-4">
+        <div class="flex justify-end space-x-2">
+          <p-button 
+             severity="primary"
+            (click)="buscar()">
+            Buscar
+          </p-button>
+          <p-button 
+           severity="secondary"
+            (click)="mavivo()">
+            Facturar
+          </p-button>
+      </div>
+    </div>
+</div>
+</div>
+<div class="flex flex-col p-2">
+
+</div>
+
+<div class="flex flex-col p-6 bg-card ">
+  <p-table [value]="manifiestos" responsiveLayout="scroll" 
+  selectionMode="single" dataKey="id"    #dt2 scrollable="true" scrollHeight="600px"
+  [globalFilterFields]="['numero_manifiesto']"
+  [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]">
+
+  <ng-template pTemplate="caption">
+    <div class="flex">
+        <p-iconField iconPosition="left" class="ml-auto">
+            <p-inputIcon>
+                <i class="pi pi-search"></i>
+            </p-inputIcon>
+            <input 
+                pInputText 
+                type="text" 
+                (input)="dt2.filterGlobal($event.target.value, 'contains')" 
+                placeholder="Busca por manifiesto" />
+        </p-iconField>
+    </div>
+</ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 50px">Acciones</th>
+            <th style="width: 150px">Número Manifiesto</th>
+            <th style="width: 100px">Destino</th>
+            <th style="width: 120px">Fecha Salida</th>
+            <th style="width: 100px">Placas</th>
+            <th style="width: 100px">Estado</th>
+            <th style="width: 150px">Valorizado</th>
+            <th style="width: 100px">Estiba</th>
+            <th style="width: 100px">Facturado</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-manifiesto>
+        <tr [pSelectableRow]="manifiesto">
+            <td>
+                  <p-button  severity="danger" size="small" (click)="editarCC(manifiesto.id)"  icon="pi pi-file-excel"></p-button>
+                  <p-button  severity="info" size="small" (click)="editarCC(manifiesto.id)"  icon="pi pi-file-plus"></p-button>
+                 
+            </td>
+            <td>{{manifiesto.numero_manifiesto}}</td>
+            <td>{{manifiesto.destino}}</td>
+            <td>{{manifiesto.fecha_salida | date:'yyyy-MM-dd'}}</td>
+            <td>{{manifiesto.placas}}</td>
+            <td>{{manifiesto.estado}}</td>
+            <td><p-tag [value]="manifiesto.valorizado| currency:'S/.'" [severity]="danger" /></td>
+            <td>{{manifiesto.estiba}}</td>
+            <td>{{manifiesto.facturado}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+          En total hay {{manifiestos ? manifiestos.length : 0 }} manifiestos.
+      </div>
+  </ng-template>
+</p-table>
+
+  </div>
+
+</div>

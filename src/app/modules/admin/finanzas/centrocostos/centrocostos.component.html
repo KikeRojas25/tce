@@ -1,0 +1,390 @@
+
+<ng-container *ngIf="(manifiesto$ | async) as manifiesto">
+    <div class="p-4">
+      <!-- Facturación Servicio -->
+      <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <input type="checkbox"
+           [(ngModel)]="manifiesto.estiba_facturado" #notification
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label   for="grid-last-name">
+                       Facturación Estiba
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.estiba_facturado" #picker  [(ngModel)]="manifiesto.estiba_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Documento Estiba
+                     </label>
+                       <input type="text" name="estibadocumento"  [(ngModel)]="manifiesto.estiba_numerodoc" [disabled]="!manifiesto.estiba_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Costo Estiba
+                     </label>
+                       <input type="text" name="estiba"  [(ngModel)]="manifiesto.estiba" [disabled]="!manifiesto.estiba_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Estiba (-)" required>
+                </div>
+  
+  
+    </div>
+  
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <input type="checkbox"
+           [(ngModel)]="manifiesto.estibaadicional_facturado" #notification
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label   for="grid-last-name">
+                       Facturación Estiba Adicional
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.estibaadicional_facturado"  [(ngModel)]="manifiesto.estibaadicional_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Documento Estiba Adicional
+                     </label>
+                       <input type="text" name="estibaadicionaldocumento"  [(ngModel)]="manifiesto.estibaadicional_numerodoc" [disabled]="!manifiesto.estibaadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Costo Estiba Adicional
+                     </label>
+                       <input type="text" name="estiba_adicional"  [(ngModel)]="manifiesto.estiba_adicional" [disabled]="!manifiesto.estibaadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Estiba Adicional (-)" required>
+                </div>
+  
+  
+    </div>
+<!--   
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <input type="checkbox"
+           [(ngModel)]="manifiesto.bejarano_pucallpa_facturado" #notification
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label   for="grid-last-name">
+                       Fact. Oriental Cargo
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.bejarano_pucallpa_facturado"  [(ngModel)]="manifiesto.bejarano_pucallpa_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Doc. Oriental Cargo
+                     </label>
+                       <input type="text" name="bejaranopucallpadocumento"  [(ngModel)]="manifiesto.bejarano_pucallpa_numerodoc" [disabled]="!manifiesto.bejarano_pucallpa_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Oriental Cargo
+                     </label>
+                       <input type="text" name="bejaranopucallpa"  [(ngModel)]="manifiesto.bejaranopucallpa" [disabled]="!manifiesto.bejarano_pucallpa_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Bejarano Pucallpa (-)" required>
+                </div>
+  
+  
+    </div> -->
+  
+  
+    <!-- <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <input type="checkbox"
+           [(ngModel)]="manifiesto.bejarano_iquitos_facturado" #notification
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label   for="grid-last-name">
+                       Facturación Bej, Iquitos
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.bejarano_iquitos_facturado"  [(ngModel)]="manifiesto.bejarano_iquitos_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Documento Bej. Iquitos
+                     </label>
+                       <input type="text" name="bejaranoiquitosadocumento"  [(ngModel)]="manifiesto.bejarano_iquitos_numerodoc" [disabled]="!manifiesto.bejarano_iquitos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Bej. Iquitos 
+                     </label>
+                       <input type="text" name="bejaranopucallpa"  [(ngModel)]="manifiesto.bejaranoiquitos" [disabled]="!manifiesto.bejarano_iquitos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Bejarano Iquitos(-)" required>
+                </div>
+  
+  
+    </div> -->
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <input type="checkbox"
+           [(ngModel)]="manifiesto.oriental_facturado" #notification
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label   for="grid-last-name">
+                       Facturación Oriental
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.oriental_facturado" #picker  [(ngModel)]="manifiesto.oriental_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Documento Oriental
+                     </label>
+                       <input type="text" name="orientaldocumento"  [(ngModel)]="manifiesto.oriental_numerodoc" [disabled]="!manifiesto.oriental_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Oriental 
+                     </label>
+                       <input type="text" name="orientalpucallpa"  [(ngModel)]="manifiesto.oriental" [disabled]="!manifiesto.oriental_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Oriental(-)" required>
+                </div>
+  
+  
+    </div>
+  
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <input type="checkbox"
+           [(ngModel)]="manifiesto.fluvial_facturado" #notification
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label   for="grid-last-name">
+                       Facturación Fluvial
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.fluvial_facturado" #picker  [(ngModel)]="manifiesto.fluvial_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Documento Fluvial
+                     </label>
+                       <input type="text" name="fluvialdocumento"  [(ngModel)]="manifiesto.fluvial_numerodoc" [disabled]="!manifiesto.fluvial_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label   for="grid-last-name">
+                        Fluvial 
+                     </label>
+                       <input type="text" name="fluvialpucallpa"  [(ngModel)]="manifiesto.fluvial" [disabled]="!manifiesto.fluvial_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                </div>
+  
+  
+    </div>
+  
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <p-checkbox type="checkbox"
+           [(ngModel)]="manifiesto.costotercero_facturado" value="costotercero_facturado"
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label  for="grid-last-name">
+                       Facturación Costo Tercero
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.costotercero_facturado" [disabled]="!manifiesto.costotercero_facturado" [(ngModel)]="manifiesto.costotercero_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="grid-last-name">
+                        Documento Tercero
+                     </label>
+                       <input type="text" name="costotercerodocumento"  [(ngModel)]="manifiesto.costotercero_numerodoc" [disabled]="!manifiesto.costotercero_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label  for="grid-last-name">
+                        Costo 
+                     </label>
+                       <input type="text" name="costotercero"  [(ngModel)]="manifiesto.costotercero" [disabled]="!manifiesto.costotercero_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                </div>
+  
+  
+    </div>
+
+    <!-- COSTO TERCERO ADICIONAL -->
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <label
+        class="k-checkbox-label"
+        [for]="notification"
+        text=""
+      ></label>
+      <p-checkbox type="checkbox"
+           [(ngModel)]="manifiesto.costoterceroadicional_facturado" value="costotercero_facturado"
+           kendoCheckBox />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label  for="grid-last-name">
+                       Fact. Costo Tercero Adicional
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.costoterceroadicional_facturado" [disabled]="!manifiesto.costoterceroadicional_facturado" [(ngModel)]="manifiesto.costoterceroadicional_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="grid-last-name">
+                        Doc. Tercero Adicional
+                     </label>
+                       <input type="text" name="costoterceroadicionaldocumento"  [(ngModel)]="manifiesto.costoterceroadicional_numerodoc" [disabled]="!manifiesto.costoterceroadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label  for="grid-last-name">
+                        Tercero Adicional 
+                     </label>
+                       <input type="text" name="costoterceroadicional"  [(ngModel)]="manifiesto.costoterceroadicional" [disabled]="!manifiesto.costoterceroadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                </div>
+  
+  
+    </div>
+  
+    <div class="flex flex-nowrap mx-2 mb-6">
+      <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
+           [(ngModel)]="manifiesto.otrosgastos_facturado" 
+            />
+  
+                <div class="w-full md:w-1/2 px-3 ">
+                    <label  for="grid-last-name">
+                       Facturación Otros Gastos
+                    </label>
+                    <p-calendar  [disabled]="!manifiesto.otrosgastos_facturado" #picker [(ngModel)]="manifiesto.otrosgastos_fecha"></p-calendar>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label  for="grid-last-name">
+                        Documento Otros Gastos
+                     </label>
+                       <input type="text" name="otrosgastosdocumento"  [(ngModel)]="manifiesto.otrosgastos_numerodoc" [disabled]="!manifiesto.otrosgastos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label  for="grid-last-name">
+                        Otros gastos
+                     </label>
+                       <input type="text" name="otrosgastos"  [(ngModel)]="manifiesto.otrosgastos" [disabled]="!manifiesto.otrosgastos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                </div>
+  
+  
+    </div>
+
+    
+      
+    <!-- ALMACENAMIENTO -->
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
+             [(ngModel)]="manifiesto.otrosgastos3_facturado"/>
+    
+                  <div class="w-full md:w-1/2 px-3 ">
+                      <label  for="grid-last-name">
+                         Facturación Almacenamiento 
+                      </label>
+                      <p-calendar  [disabled]="!manifiesto.almacenamiento_facturado" #picker [(ngModel)]="manifiesto.otrosgastos3_fecha"></p-calendar>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                      <label  for="grid-last-name">
+                          Documento Almacenamiento
+                       </label>
+                         <input type="text" name="Almacenamientodocumento"  [(ngModel)]="manifiesto.otrosgastos3_numerodoc" [disabled]="!manifiesto.otrosgastos3_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                      <label  for="grid-last-name">
+                        Almacenamiento
+                       </label>
+                         <input type="text" name="otrosgastos3"  [(ngModel)]="manifiesto.otrosgastos3" [disabled]="!manifiesto.otrosgastos3_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                  </div>
+    
+    
+      </div>
+
+
+    <!-- ALMACENAMIENTO ADICIONAL -->
+    <div class="flex flex-nowrap mx-2 mb-6">
+        <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
+             [(ngModel)]="manifiesto.otrosgastos2_facturado" 
+              />
+    
+                  <div class="w-full md:w-1/2 px-3 ">
+                      <label  for="grid-last-name">
+                         Fact. Almacenamiento Adicional
+                      </label>
+                      <p-calendar  [disabled]="!manifiesto.otrosgastos2_facturado" #picker [(ngModel)]="manifiesto.otrosgastos2_fecha"></p-calendar>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                      <label  for="grid-last-name">
+                          Doc. Almacenamiento Adicional
+                       </label>
+                         <input type="text" name="otrosgastos2documento"  [(ngModel)]="manifiesto.otrosgastos2_numerodoc" [disabled]="!manifiesto.otrosgastos2_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                      <label  for="grid-last-name">
+                        Almacenamiento Adicional
+                       </label>
+                         <input type="text" name="otrosgastos2"  [(ngModel)]="manifiesto.otrosgastos2" [disabled]="!manifiesto.otrosgastos2_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                  </div>
+    
+    
+      </div>
+
+
+
+
+
+
+  
+  
+      
+      <div class="flex flex-nowrap mx-2 mb-6">
+        <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
+             [(ngModel)]="manifiesto.otrosgastos4_facturado" 
+              />
+    
+                  <div class="w-full md:w-1/2 px-3 ">
+                      <label  for="grid-last-name">
+                         Fact. Poliza resguardo 
+                      </label>
+                      <p-calendar  [disabled]="!manifiesto.otrosgastos4_facturado" #picker [(ngModel)]="manifiesto.otrosgastos4_fecha"></p-calendar>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                      <label  for="grid-last-name">
+                          Doc. Poliza resguardo 
+                       </label>
+                         <input type="text" name="otrosgastos3documento"  [(ngModel)]="manifiesto.otrosgastos4_numerodoc" [disabled]="!manifiesto.otrosgastos4_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                      <label  for="grid-last-name">
+                        Poliza resguardo 
+                       </label>
+                         <input type="text" name="otrosgastos3"  [(ngModel)]="manifiesto.otrosgastos4" [disabled]="!manifiesto.otrosgastos4_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                  </div>
+    
+    
+      </div>
+   
+    
+  
+      <div class="flex justify-end space-x-2 mt-4">
+         <p-button icon="pi pi-folder"  severity="warning" label="Guardar"   (click)="guardar(manifiesto)"></p-button>
+          <p-button icon="pi pi-times" label="Cerrar"  (click)="close()"></p-button> 
+      </div>
+    </div>
+
+</ng-container>
