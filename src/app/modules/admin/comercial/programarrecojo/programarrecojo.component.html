@@ -1,0 +1,211 @@
+
+<div class="flex flex-col flex-auto min-w-0">
+
+  <!-- Encabezado -->
+
+  <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+    <div class="flex-1 min-w-0">
+      <div  class="flex flex-wrap items-center font-medium">
+        <div>
+          <a  class="whitespace-nowrap text-primary-500">TCE</a>
+        </div>
+        <div class="flex items-center ml-1 whitespace-nowrap">
+              <mat-icon
+              class="fuse-horizontal-navigation-item-icon"
+              [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+              <a  class="ml-1 text-primary-500">Comercial</a>
+          </div>
+      </div>
+          <div class="mt-2"><h2  class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"> Programación de Recojo</h2>
+      </div>
+  </div>
+  </div>
+
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6 bg-card dark:bg-transparent">
+    <div class="field flex flex-col">
+      <label for="listGrupos" class="font-semibold mb-1">Grupos</label>
+
+
+      <p-dropdown 
+        [options]="listGrupos" 
+        [(ngModel)]="selectedGrupo" 
+        optionLabel="label" 
+        id="listGrupos"
+        appendTo="body" 
+        (onChange)="cargarClientes()"
+        [filter]="true" 
+        [style]="{'width':'100%'}"
+        placeholder="Selección de grupo">
+      
+        <ng-template let-item pTemplate="selectedItem">
+          <span style="vertical-align:middle;">{{item.label}}</span>
+          </ng-template>
+      
+      </p-dropdown>
+    </div>
+
+
+    <!-- Clientes -->
+    <div class="field flex flex-col">
+      <label for="listClientes" class="font-semibold mb-1">Clientes</label>
+      <p-dropdown
+        [options]="listClientes" 
+        [(ngModel)]="selectedClientes" 
+        id="listClientes"
+        appendTo="body" 
+        [style]="{'width':'100%'}"
+        [filter]="true" 
+        class="fixed-multiselect"
+        placeholder="Selección de clientes">
+        <ng-template let-item pTemplate="selectedItem">
+          <span style="vertical-align:middle;">{{item.label}}</span>
+          </ng-template>
+
+      </p-dropdown>
+    </div>
+
+    <div class="field flex flex-col">
+      <label for="dateInicio" class="font-semibold mb-1">Fecha de Cita</label>
+      <p-calendar 
+        id="dateInicio"
+        [style]="{'width':'100%'}"
+        [(ngModel)]="dateInicio" 
+        dateFormat="dd.mm.yy" 
+        />
+    </div>
+
+    <div class="field flex flex-col">
+      <label for="dateInicio" class="font-semibold mb-1">Fecha de Cita</label>
+      <p-calendar 
+      [style]="{'width':'100%'}"
+      [(ngModel)]="dateInicio" 
+            [timeOnly]="true"></p-calendar>
+    </div>
+
+
+
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6 bg-card dark:bg-transparent">
+    <div class="flex flex-col">
+    <label for="listTipoUnidad" class="font-semibold mb-1">Tipo Unidad</label>
+    <p-dropdown 
+      [options]="listTipoUnidad" 
+      [(ngModel)]="selectedGrupo" 
+      optionLabel="label" 
+      id="listTipoUnidad"
+      [style]="{'width':'100%'}"
+      appendTo="body" 
+      [filter]="true" 
+      placeholder="Selección de Tipo Unidad">
+    
+      <ng-template let-item pTemplate="selectedItem">
+        <span style="vertical-align:middle;">{{item.label}}</span>
+        </ng-template>
+    
+    </p-dropdown>
+  </div>
+
+
+   
+  <div class="flex flex-col">
+    <label for="listGrupos" class="font-semibold mb-1">CD Carga</label>
+    <input 
+    pInputText 
+    name="cdcarga"
+    minlength="5" 
+    maxlength="50" 
+    autocomplete="off" 
+    type="text">
+
+  </div>
+
+
+  
+   
+  <div class="flex flex-col">
+    <label for="listGrupos" class="font-semibold mb-1">Peso</label>
+    <input 
+    pInputText 
+    
+    minlength="5" 
+    maxlength="50" 
+    autocomplete="off" 
+    type="text">
+
+  </div>
+
+  
+   
+  <div class="flex flex-col">
+    <label for="listGrupos" class="font-semibold mb-1">m3</label>
+    <input 
+    pInputText 
+
+    minlength="5" 
+    maxlength="50" 
+    autocomplete="off" 
+    type="text">
+
+  </div>
+
+
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6 bg-card dark:bg-transparent">
+  <div class="flex flex-col">
+    <label for="listTipoOperacion" class="font-semibold mb-1">Tipo de Operación</label>
+    <p-dropdown
+      [options]="listTipoOperacion" 
+      [(ngModel)]="selectedClientes" 
+      id="listTipoOperacion"
+      appendTo="body" 
+      [filter]="true" 
+      class="fixed-multiselect"
+      [style]="{'width':'100%'}"
+      placeholder="Selección de Operación">
+      <ng-template let-item pTemplate="selectedItem">
+        <span style="vertical-align:middle;">{{item.label}}</span>
+        </ng-template>
+
+    </p-dropdown>
+  </div>
+  <div class="flex flex-col">
+    <label for="listDestino" class="font-semibold mb-1">Destino</label>
+    <p-dropdown
+      [options]="listUbigeo" 
+      [(ngModel)]="selectedDestino" 
+      id="listDestino"
+      appendTo="body" 
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="20"
+      [filter]="true" 
+      class="fixed-multiselect"
+      [style]="{'width':'100%'}"
+      placeholder="Selección de destino">
+      <ng-template let-item pTemplate="selectedItem">
+        <span style="vertical-align:middle;">{{item.label}}</span>
+        </ng-template>
+
+    </p-dropdown>
+  </div>
+
+</div>  
+<div class="grid grid-cols-1 md:grid-cols-8 gap-4 p-6 bg-card dark:bg-transparent">
+  <div class="flex flex-col">
+
+    <p-button label="Guardar" severity="primary" icon="fa fa-save" (onClick)="guardar()"> </p-button>
+    
+  </div>
+    <div class="flex flex-col">
+    <p-button label="Salir" severity="danger" icon="fa fa-close" (onClick)="regresar()"> </p-button>
+
+
+
+  </div>
+</div>
+
+</div>
+
+<p-confirmDialog />

@@ -1,31 +1,31 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { CentrocostosComponent } from '../../finanzas/centrocostos/centrocostos.component';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
-import { SelectItem } from 'primeng/api';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
-import { InputTextModule } from 'primeng/inputtext';
-import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { MultiSelectModule } from 'primeng/multiselect';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import moment from 'moment';
+import { SelectItem } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { DynamicDialogModule, DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
 import { FinanzasService } from '../../finanzas/finanzas.service';
 import { ComercialService } from '../comercial.service';
 import { Manifiesto } from '../comercial.types';
-import moment from 'moment';
-import { map } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-listordenes',
-  templateUrl: './listordenes.component.html',
-  styleUrls: ['./listordenes.component.css'],
+  selector: 'app-listmanifiesto',
+  templateUrl: './listmanifiesto.component.html',
+  styleUrls: ['./listmanifiesto.component.css'],
   standalone: true,
-  imports:[
-    CommonModule,
+  imports: [
+    CommonModule, 
     FormsModule,
     MatIcon,
     MultiSelectModule,
@@ -36,26 +36,23 @@ import { Router } from '@angular/router';
     TableModule,
     TagModule ,
     InputTextModule
+    
 
 
-   ],
-   providers: [DialogService]
+  ],
+  providers: [DialogService]
 })
-export class ListordenesComponent implements OnInit {
-
+export class  ListmanifiestoComponent implements OnInit {
 
 
 
   ref: DynamicDialogRef | undefined;
 
 public listClientes: SelectItem[] = [];
-public listGrupos: SelectItem[] = [];
 public clientes:  SelectItem[] = [];
 public selectedCliente: { text: string; value: number };
 public listValorTabla: SelectItem[]= [];
 public selectedClientes: any[] =[];
-
-public selectedGrupo: any = {};
 
 jwtHelper = new JwtHelperService();
 public opened = false;
@@ -78,7 +75,7 @@ public mySelection: number[] = [];
 
 
 
-ordenes:  any =[];
+manifiestos:  any =[];
  public defaultItem: { text: string; value: number } = {
     text: 'Seleccione uno...',
     value: null,
@@ -87,9 +84,6 @@ ordenes:  any =[];
 
    dateInicio: Date = new Date(Date.now()) ;
    dateFin: Date = new Date(Date.now()) ;
-   
-   
-
 
    facServicio: Date = new Date(Date.now()) ;
    facAdicional: Date = new Date(Date.now()) ;
@@ -128,36 +122,12 @@ ordenes:  any =[];
         list.forEach((x) => {
             this.listClientes.push ({ label: x.razon_social , value: x.id });
         });
+    } , (_error) => {}
+    ,    () => {
+       // this.loadItems();
     });
 
-
-    this.comercialService.getGrupos('', this.decodedToken.nameid ).subscribe((list) => {
-      list.forEach((x) => {
-          this.listGrupos.push ({ label: x.nombre , value: x.id });
-      });
-  });
-
-  this.loadItems();
-
-
   }
-  cargarClientes(){
-
-    this.listClientes = [];
-
-    console.log(this.selectedGrupo);
-
-  
-    this.comercialService.getClientesxGrupo(this.selectedGrupo.value).subscribe({
-      next: response => {
-      
-        response.forEach((x) => {
-            this.listClientes.push ({ label: x.razon_social , value: x.id });
-        });
-      }
-    });
-  }
-
   openManifiestoDialog(manifiesto: Manifiesto): void
   {
     //DetailsManifiestoComponent
@@ -169,14 +139,9 @@ ordenes:  any =[];
       // });
   }
   mavivo(): void {
-    // this.currentItem = null;
-    // this.opened2 = true;
-    // this.currentItem = this.mySelection;
-
-    this.router.navigate(['seguimiento/new']);
-
-
-
+    this.currentItem = null;
+    this.opened2 = true;
+    this.currentItem = this.mySelection;
 }
   openCentroCostoDialog(manifiesto: Manifiesto): void
   {
@@ -338,7 +303,21 @@ ordenes:  any =[];
       
 }
 editarCC(id): void {
-
+  this.ref = this.dialogService.open(CentrocostosComponent, { 
+      header: 'Actualizar Facturas',
+      width: '70vw',
+      modal:true,
+      breakpoints: {
+          '960px': '75vw',
+          '640px': '90vw'
+      },
+      data: {
+        id: id
+    },
+    
+    
+    
+    });
 
 }
 
@@ -347,26 +326,21 @@ editarCC(id): void {
 
 private loadItems(): void {
     let ids = '';
-    var tiposervicio = this.selectedValorTabla?.value;
 
     this.selectedClientes.forEach( (x)=> {
          ids = ids  + ',' + x.value;
     });
 
-    this.comercialService.gerAllOrders(  ids,
-                                         this.dateInicio , 
-                                         this.dateFin,
-                                         this.decodedToken.nameid , 
-                                         '',
-                                         '',
-                                         '',
-                                         '',
-                                        ).subscribe((products) => {
-          this.ordenes =  products;
-          console.log('ordenes:',this.ordenes)
-
+    this.manifiestoService.getManifiestos( ids,this.dateInicio , this.dateFin,this.decodedToken.nameid , this.selectedValorTabla?.value).subscribe((products) => {
+          this.manifiestos =  products;
+          console.log('0', this.manifiestos);
        
       });
+    }
+
+    verRouting(idmanifiesto) {
+      this.router.navigate(['/seguimiento/routing',idmanifiesto  ]);
+
     }
 
 }

@@ -80,6 +80,26 @@ export const appRoutes: Route[] = [
                   .then(m => m.ExampleComponent)
             },
             {
+              path: 'seguridad',
+              loadComponent: () => import('./modules/admin/seguridad/seguridad.component')
+                                    .then(m => m.SeguridadComponent),
+              children: [
+                {
+                  path: 'listausuarios',
+                  loadComponent: () => import('./modules/admin/seguridad/listuser/listuser.component')
+                                        .then(m => m.ListuserComponent)
+                },
+                {
+                  path: 'newusuario',
+                  loadComponent: () => import('./modules/admin/seguridad/newuser/newuser.component')
+                                        .then(m => m.NewuserComponent)
+                },
+               
+                
+             
+              ]
+            },
+            {
                 path: 'seguimiento',
                 loadComponent: () => import('./modules/admin/finanzas/finanzas.component')
                                       .then(m => m.FinanzasComponent),
@@ -93,7 +113,40 @@ export const appRoutes: Route[] = [
                     path: 'listaorden',
                     loadComponent: () => import('./modules/admin/comercial/listordenes/listordenes.component')
                                           .then(m => m.ListordenesComponent)
+                  },
+                  {
+                    path: 'new',
+                    loadComponent: () => import('./modules/admin/comercial/new/new.component')
+                                          .then(m => m.NewPlanningComponent)
+                  },
+                  {
+                    path: 'manifiesto2',
+                    loadComponent: () => import('./modules/admin/comercial/listmanifiesto/listmanifiesto.component')
+                                          .then(m => m.ListmanifiestoComponent)
+                  },
+                  {
+                    path: 'routing/:uid',
+                    loadComponent: () => import('./modules/admin/comercial/routing/routing.component' )
+                                          .then(m => m.RoutingComponent)
+                  },
+                  {
+                    path: 'recojo',
+                    loadComponent: () => import('./modules/admin/comercial/programarrecojo/programarrecojo.component' )
+                                          .then(m => m.ProgramarrecojoComponent)
                   }
+                ]
+              },
+              {
+                path: 'reportes',
+                loadComponent: () => import('./modules/admin/reportes/reportes.component')
+                                      .then(m => m.ReportesComponent),
+                children: [
+                  {
+                    path: 'activity',
+                    loadComponent: () => import('./modules/admin/reportes/activity/activity.component')
+                                          .then(m => m.ActivityComponent)
+                  },
+                 
                 ]
               },
         ]

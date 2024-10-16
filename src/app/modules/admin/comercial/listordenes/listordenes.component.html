@@ -34,6 +34,8 @@
      <!-- Clientes -->
      <div class="flex flex-col">
       <label for="listGrupos" class="font-semibold mb-1">Grupos</label>
+
+
       <p-dropdown 
         [options]="listGrupos" 
         [(ngModel)]="selectedGrupo" 
@@ -42,7 +44,13 @@
         appendTo="body" 
         (onChange)="cargarClientes()"
         [filter]="true" 
-        placeholder="Selección de grupo" />
+        placeholder="Selección de grupo">
+      
+        <ng-template let-item pTemplate="selectedItem">
+          <span style="vertical-align:middle;">{{item.label}}</span>
+          </ng-template>
+      
+      </p-dropdown>
     </div>
 
 
@@ -52,7 +60,6 @@
       <p-multiSelect 
         [options]="listClientes" 
         [(ngModel)]="selectedClientes" 
-        optionLabel="label" 
         id="listClientes"
         appendTo="body" 
         [filter]="true" 
@@ -67,7 +74,7 @@
         name="listvalortabla" 
         id="listvalortabla" 
         [options]="listValorTabla"
-        [(ngModel)]="selectedValorTabla"
+        [(ngModel)]="model.idvalortabla"
         placeholder="Selección de Tipo de Servicio" 
         class="w-full"
          />
@@ -96,16 +103,8 @@
     <!-- Botones -->
     <div class="flex flex-col md:col-span-2 lg:col-span-4 mt-4">
       <div class="flex justify-end space-x-2">
-        <p-button 
-           severity="primary"
-          (click)="buscar()">
-          Buscar
-        </p-button>
-        <p-button 
-         severity="secondary"
-          (click)="mavivo()">
-          Facturar
-        </p-button>
+        <p-button   severity="primary" label="Buscar" icon="fa fa-search" (click)="buscar()">  </p-button>
+        <p-button  severity="secondary" label="Planning" icon="fa fa-truck" (click)="mavivo()">   </p-button>
     </div>
   </div>
 </div>
@@ -115,7 +114,8 @@
 </div>
 
 <div class="flex flex-col p-6 bg-card ">
-<p-table [value]="manifiestos" responsiveLayout="scroll" 
+  
+<p-table [value]="ordenes" responsiveLayout="scroll" 
 selectionMode="single" dataKey="id"    #dt2 scrollable="true" scrollHeight="600px"
 [globalFilterFields]="['numero_manifiesto']"
 [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]">
@@ -137,31 +137,37 @@ selectionMode="single" dataKey="id"    #dt2 scrollable="true" scrollHeight="600p
   <ng-template pTemplate="header">
       <tr>
           <th style="width: 50px">Acciones</th>
-          <th style="width: 150px">Número Manifiesto</th>
-          <th style="width: 100px">Destino</th>
-          <th style="width: 120px">Fecha Salida</th>
-          <th style="width: 100px">Placas</th>
-          <th style="width: 100px">Estado</th>
-          <th style="width: 150px">Valorizado</th>
-          <th style="width: 100px">Estiba</th>
-          <th style="width: 100px">Facturado</th>
+          <th style="width: 150px">Manifiesto</th>
+          <th style="width: 150px">OT</th>
+          <th style="width: 120px">Fecha carga</th>
+          <th style="width: 100px">Shipment</th>
+          <th style="width: 120px">OC</th>
+          <th style="width: 120px">Estado</th>
+          <th style="width: 100px">Remitente</th>
+          <th style="width: 100px">Tracto</th>
+          <th style="width: 150px">Carreta</th>
+          <th style="width: 100px">Conductor</th>
+          <th style="width: 100px">Tipo servicio</th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-manifiesto>
-      <tr [pSelectableRow]="manifiesto">
+  <ng-template pTemplate="body" let-orden>
+      <tr [pSelectableRow]="orden">
           <td>
-                <p-button  severity="danger" size="small" (click)="editarCC(manifiesto.id)" label="Gastos"  icon="pi pi-clipboard"></p-button>
-                <p-button  severity="info" size="small" (click)="editarCC(manifiesto.id)" label="Ingresos" icon="pi pi-clipboard"></p-button>
+                <p-button  severity="danger" size="small" (click)="editarCC(orden.id)"   icon="fa fa-edit"></p-button>
+                <p-button  severity="info" size="small" (click)="editarCC(orden.id)"  icon="pi pi-clipboard"></p-button>
                
           </td>
-          <td>{{manifiesto.numero_manifiesto}}</td>
-          <td>{{manifiesto.destino}}</td>
-          <td>{{manifiesto.fecha_salida | date:'yyyy-MM-dd'}}</td>
-          <td>{{manifiesto.placas}}</td>
-          <td>{{manifiesto.estado}}</td>
-          <td><p-tag [value]="manifiesto.valorizado| currency:'S/.'" [severity]="danger" /></td>
-          <td>{{manifiesto.estiba}}</td>
-          <td>{{manifiesto.facturado}}</td>
+          <td>{{orden.numero_manifiesto}}</td>
+          <td>{{orden.numero_ot}}</td>
+          <td>{{orden.fecha_carga | date:'dd/MM/yyyy'}}</td>
+          <td>{{orden.shipment}}</td>
+          <td>{{orden.oc}}</td>
+          <td>{{orden.estado}}</td>
+          <td>{{orden.remitente}}</td>
+          <td>{{orden.tracto}}</td>
+          <td>{{orden.carreta}}</td>
+          <td>{{orden.chofer}}</td>
+          <td>{{orden.tipoServicio}}</td>
       </tr>
   </ng-template>
   <ng-template pTemplate="summary">

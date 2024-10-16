@@ -9,6 +9,7 @@ import { DialogService, DynamicDialogComponent, DynamicDialogRef } from 'primeng
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
+import { consumerPollProducersForChange } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-centrocostos',
@@ -120,6 +121,9 @@ export class CentrocostosComponent implements OnInit {
 }
 
   guardar(manifiesto: Manifiesto): void {
+
+    console.log('manifiesto:',manifiesto);
+
 
     this.manifiestoChanged.next(manifiesto);
 

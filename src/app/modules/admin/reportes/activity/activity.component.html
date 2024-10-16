@@ -1,0 +1,134 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+  <!-- Sección de encabezado -->
+  <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+      <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center font-medium">
+              <div>
+                  <a class="whitespace-nowrap text-primary-500">Aplicaciones</a>
+              </div>
+              <div class="flex items-center ml-1 whitespace-nowrap">
+                  <i class="pi pi-chevron-right text-secondary"></i>
+                  <a class="ml-1 text-primary-500">Activity</a>
+              </div>
+          </div>
+          <div class="mt-2">
+              <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                  Actividad diaria
+              </h2>
+          </div>
+      </div>
+  </div>
+
+  <!-- Sección de filtros -->
+  <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+      <div class="flex-1 min-w-full">
+
+          <div class="main-content mb-10 container-fluid">
+              <div class="flex">
+                  <div class="w-full md:w-1/2">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="listcliente">
+                          Cliente
+                      </label>
+                      <p-dropdown name="listcliente"  [options]="listClientes" [(ngModel)]="model.idcliente"
+                          placeholder="Seleccione un cliente" filter="true" >
+                          <ng-template let-item pTemplate="selectedItem">
+                            <span class="align-middle">{{item.label}}</span>
+                          </ng-template>
+                      </p-dropdown>
+                  </div>
+
+                  <div class="w-full md:w-1/2 px-3">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="dateInicio">
+                          Inicio Recojo
+                      </label>
+                      <p-calendar [(ngModel)]="dateInicio" dateFormat="dd/mm/yy"></p-calendar>
+                  </div>
+
+                  <div class="w-full md:w-1/2 px-3">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="listvalortabla">
+                          Tipo Servicio
+                      </label>
+                      <p-dropdown name="listvalortabla" id="listvalortabla" [options]="listValorTabla" [(ngModel)]="selectedValorTabla"
+                          placeholder="Seleccione un servicio">
+                          <ng-template let-item pTemplate="selectedItem">
+                            <span class="align-middle">{{item.label}}</span>
+                          </ng-template>
+                      </p-dropdown>
+                  </div>
+
+                  <div class="w-full md:w-1/2 px-3 mt-5">
+                      <p-button   label="Buscar" icon="pi pi-search" (click)="buscar()"></p-button>
+                  </div>
+              </div>
+
+              <!-- Avance y OTIF -->
+              <div class="flex">
+                  <div class="w-1/2 px-3 mt-10">
+                      <h5 class="no-margin">AVANCE</h5>
+                      <p-progressBar 
+                      [value]="avance.entregados" 
+                      [ngClass]="{
+                          'bg-red-600': avance.entregados < 20,
+                          'bg-yellow-500': avance.entregados >= 20 && avance.entregados <= 80,
+                          'bg-green-600': avance.entregados > 80
+                      }"
+                      style="height: 20px;">
+                  </p-progressBar>
+                  </div>
+          
+              </div>
+
+              <!-- Gráficos de pie -->
+              <div class="flex justify-between items-center gap-6 p-6">
+                <div class="w-1/2 px-4 flex justify-center">
+                  <!-- Primer gráfico más grande -->
+                  <p-chart type="pie" [data]="data2" [options]="options2" style="max-width: 350px;"></p-chart>
+                </div>
+                <div class="w-1/2 px-4 flex justify-center">
+                  <!-- Segundo gráfico más grande -->
+                  <p-chart type="pie" [data]="data" [options]="options" style="max-width: 350px;"></p-chart>
+                </div>
+              </div>
+              
+              
+              <!-- Tabla de datos -->
+              <div class="flex">
+                  <div class="w-full px-3">
+                      <p-table [value]="gridDataResult"    [responsive]="true"  selectionMode="multiple" >
+                          <ng-template pTemplate="header">
+                              <tr>
+                                  <th pSortableColumn="placa" style="background-color: #a8c3bc; color: white;">PLACA</th>
+                                  <th pSortableColumn="chofer" style="background-color: #666; color: white;">CONDUCTOR</th>
+                                  <th pSortableColumn="pendientes" style="background-color: #666; color: white;">PENDIENTES</th>
+                                  <th pSortableColumn="entregados" style="background-color: #666; color: white;">ENTREGADOS</th>
+                                  <th pSortableColumn="entregadosOK" style="background-color: #229954; color: white;">APROBADO</th>
+                                  <th pSortableColumn="entregadosParcial" style="background-color: #E7E117; color: white;">PARCIAL</th>
+                                  <th pSortableColumn="entregadosRechazo" style="background-color: #E72317; color: white;">RECHAZADO</th>
+                                  <th pSortableColumn="avance">% AVANCE</th>
+                                  <th pSortableColumn="total" style="background-color: #666; color: white;">TOTAL</th>
+                              </tr>
+                          </ng-template>
+
+                          <ng-template pTemplate="body" let-rowData>
+                              <tr [pSelectableRow]="rowData">
+                                  <td>{{ rowData.placa }}</td>
+                                  <td>{{ rowData.chofer }}</td>
+                                  <td>{{ rowData.pendientes }}</td>
+                                  <td>{{ rowData.entregados }}</td>
+                                  <td>{{ rowData.entregadosOK }}</td>
+                                  <td>{{ rowData.entregadosParcial }}</td>
+                                  <td>{{ rowData.entregadosRechazo }}</td>
+                                  <td>
+                                    <p-progressBar [value]="rowData.avance" [showValue]="true"></p-progressBar>
+                                  </td>
+                                  <td>{{ rowData.total }}</td>
+                              </tr>
+                          </ng-template>
+                      </p-table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

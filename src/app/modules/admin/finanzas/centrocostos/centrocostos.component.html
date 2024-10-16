@@ -3,64 +3,56 @@
     <div class="p-4">
       <!-- Facturación Servicio -->
       <div class="flex flex-nowrap mx-2 mb-6">
-        <label
-        class="k-checkbox-label"
-        [for]="notification"
-        text=""
-      ></label>
-      <input type="checkbox"
-           [(ngModel)]="manifiesto.estiba_facturado" #notification
-           kendoCheckBox />
+       
+          <p-checkbox   binary="true" 
+           [(ngModel)]="manifiesto.estiba_Facturado" 
+            />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label   for="grid-last-name">
-                       Facturación Estiba
+                       Fecha Facturación Estiba
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.estiba_facturado" #picker  [(ngModel)]="manifiesto.estiba_fecha"></p-calendar>
+                    <p-calendar  [disabled]="!manifiesto.estiba_Facturado" #picker  [(ngModel)]="manifiesto.estiba_Fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Documento Estiba
                      </label>
-                       <input type="text" name="estibadocumento"  [(ngModel)]="manifiesto.estiba_numerodoc" [disabled]="!manifiesto.estiba_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  name="estibadocumento" pInputText  [(ngModel)]="manifiesto.estiba_Numerodoc" [disabled]="!manifiesto.estiba_Facturado"  placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Costo Estiba
                      </label>
-                       <input type="text" name="estiba"  [(ngModel)]="manifiesto.estiba" [disabled]="!manifiesto.estiba_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Estiba (-)" required>
+                       <input  name="estiba" pInputText [(ngModel)]="manifiesto.estiba" [disabled]="!manifiesto.estiba_Facturado"  placeholder="Costo Estiba (-)" required>
                 </div>
   
   
     </div>
   
     <div class="flex flex-nowrap mx-2 mb-6">
-        <label
-        class="k-checkbox-label"
-        [for]="notification"
-        text=""
-      ></label>
-      <input type="checkbox"
-           [(ngModel)]="manifiesto.estibaadicional_facturado" #notification
-           kendoCheckBox />
+       
+      <p-checkbox 
+           [(ngModel)]="manifiesto.estibaAdicional_Facturado" binary="true" 
+            />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label   for="grid-last-name">
-                       Facturación Estiba Adicional
+                      Fecha Facturación Estiba Adicional
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.estibaadicional_facturado"  [(ngModel)]="manifiesto.estibaadicional_fecha"></p-calendar>
+                    <p-calendar  [disabled]="!manifiesto.estibaAdicional_Facturado"  [(ngModel)]="manifiesto.estibaAdicional_Fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Documento Estiba Adicional
                      </label>
-                       <input type="text" name="estibaadicionaldocumento"  [(ngModel)]="manifiesto.estibaadicional_numerodoc" [disabled]="!manifiesto.estibaadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="estibaadicionaldocumento"  [(ngModel)]="manifiesto.estibaAdicional_Numerodoc" [disabled]="!manifiesto.estibaAdicional_Facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Costo Estiba Adicional
                      </label>
-                       <input type="text" name="estiba_adicional"  [(ngModel)]="manifiesto.estiba_adicional" [disabled]="!manifiesto.estibaadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Estiba Adicional (-)" required>
+                       <input  pInputText name="estiba_adicional"  [(ngModel)]="manifiesto.estiba_Adicional" [disabled]="!manifiesto.estibaAdicional_Facturado"   placeholder="Costo Estiba Adicional (-)" required>
                 </div>
   
   
@@ -86,13 +78,13 @@
                     <label   for="grid-last-name">
                         Doc. Oriental Cargo
                      </label>
-                       <input type="text" name="bejaranopucallpadocumento"  [(ngModel)]="manifiesto.bejarano_pucallpa_numerodoc" [disabled]="!manifiesto.bejarano_pucallpa_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="bejaranopucallpadocumento"  [(ngModel)]="manifiesto.bejarano_pucallpa_numerodoc" [disabled]="!manifiesto.bejarano_pucallpa_facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Oriental Cargo
                      </label>
-                       <input type="text" name="bejaranopucallpa"  [(ngModel)]="manifiesto.bejaranopucallpa" [disabled]="!manifiesto.bejarano_pucallpa_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Bejarano Pucallpa (-)" required>
+                       <input  pInputText name="bejaranopucallpa"  [(ngModel)]="manifiesto.bejaranopucallpa" [disabled]="!manifiesto.bejarano_pucallpa_facturado"   placeholder="Costo Bejarano Pucallpa (-)" required>
                 </div>
   
   
@@ -119,108 +111,96 @@
                     <label   for="grid-last-name">
                         Documento Bej. Iquitos
                      </label>
-                       <input type="text" name="bejaranoiquitosadocumento"  [(ngModel)]="manifiesto.bejarano_iquitos_numerodoc" [disabled]="!manifiesto.bejarano_iquitos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="bejaranoiquitosadocumento"  [(ngModel)]="manifiesto.bejarano_iquitos_numerodoc" [disabled]="!manifiesto.bejarano_iquitos_facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Bej. Iquitos 
                      </label>
-                       <input type="text" name="bejaranopucallpa"  [(ngModel)]="manifiesto.bejaranoiquitos" [disabled]="!manifiesto.bejarano_iquitos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Bejarano Iquitos(-)" required>
+                       <input  pInputText name="bejaranopucallpa"  [(ngModel)]="manifiesto.bejaranoiquitos" [disabled]="!manifiesto.bejarano_iquitos_facturado"   placeholder="Costo Bejarano Iquitos(-)" required>
                 </div>
   
   
     </div> -->
     <div class="flex flex-nowrap mx-2 mb-6">
-        <label
-        class="k-checkbox-label"
-        [for]="notification"
-        text=""
-      ></label>
-      <input type="checkbox"
-           [(ngModel)]="manifiesto.oriental_facturado" #notification
-           kendoCheckBox />
+      
+      <p-checkbox  binary="true"
+           [(ngModel)]="manifiesto.oriental_Facturado" 
+            />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label   for="grid-last-name">
-                       Facturación Oriental
+                       Fecha Facturación Oriental
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.oriental_facturado" #picker  [(ngModel)]="manifiesto.oriental_fecha"></p-calendar>
+                    <p-calendar  [disabled]="!manifiesto.oriental_Facturado" #picker  [(ngModel)]="manifiesto.oriental_Fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Documento Oriental
                      </label>
-                       <input type="text" name="orientaldocumento"  [(ngModel)]="manifiesto.oriental_numerodoc" [disabled]="!manifiesto.oriental_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="orientaldocumento"  [(ngModel)]="manifiesto.oriental_Numerodoc" [disabled]="!manifiesto.oriental_Facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Oriental 
                      </label>
-                       <input type="text" name="orientalpucallpa"  [(ngModel)]="manifiesto.oriental" [disabled]="!manifiesto.oriental_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Oriental(-)" required>
+                       <input  pInputText name="orientalpucallpa"  [(ngModel)]="manifiesto.oriental" [disabled]="!manifiesto.oriental_Facturado"   placeholder="Costo Oriental(-)" required>
                 </div>
   
   
     </div>
   
     <div class="flex flex-nowrap mx-2 mb-6">
-        <label
-        class="k-checkbox-label"
-        [for]="notification"
-        text=""
-      ></label>
-      <input type="checkbox"
-           [(ngModel)]="manifiesto.fluvial_facturado" #notification
-           kendoCheckBox />
+       
+      <p-checkbox binary="true"
+           [(ngModel)]="manifiesto.fluvial_Facturado" 
+            />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label   for="grid-last-name">
-                       Facturación Fluvial
+                       Fecha Facturación Fluvial
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.fluvial_facturado" #picker  [(ngModel)]="manifiesto.fluvial_fecha"></p-calendar>
+                    <p-calendar  [disabled]="!manifiesto.fluvial_Facturado" #picker  [(ngModel)]="manifiesto.fluvial_Fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Documento Fluvial
                      </label>
-                       <input type="text" name="fluvialdocumento"  [(ngModel)]="manifiesto.fluvial_numerodoc" [disabled]="!manifiesto.fluvial_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="fluvialdocumento"  [(ngModel)]="manifiesto.fluvial_Numerodoc" [disabled]="!manifiesto.fluvial_Facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label   for="grid-last-name">
                         Fluvial 
                      </label>
-                       <input type="text" name="fluvialpucallpa"  [(ngModel)]="manifiesto.fluvial" [disabled]="!manifiesto.fluvial_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                       <input  pInputText name="fluvialpucallpa"  [(ngModel)]="manifiesto.Fluvial" [disabled]="!manifiesto.fluvial_Facturado"   placeholder="Costo Fluvial(-)" required>
                 </div>
   
   
     </div>
   
     <div class="flex flex-nowrap mx-2 mb-6">
-        <label
-        class="k-checkbox-label"
-        [for]="notification"
-        text=""
-      ></label>
-      <p-checkbox type="checkbox"
-           [(ngModel)]="manifiesto.costotercero_facturado" value="costotercero_facturado"
-           kendoCheckBox />
+      
+      <p-checkbox 
+           [(ngModel)]="manifiesto.costoTercero_Facturado"   binary="true" 
+            />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label  for="grid-last-name">
-                       Facturación Costo Tercero
+                      Fecha Facturación Costo Tercero
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.costotercero_facturado" [disabled]="!manifiesto.costotercero_facturado" [(ngModel)]="manifiesto.costotercero_fecha"></p-calendar>
+                    <p-calendar   [disabled]="!manifiesto.costoTercero_Facturado" [(ngModel)]="manifiesto.costoTercero_Fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label for="grid-last-name">
                         Documento Tercero
                      </label>
-                       <input type="text" name="costotercerodocumento"  [(ngModel)]="manifiesto.costotercero_numerodoc" [disabled]="!manifiesto.costotercero_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input pInputText  name="costotercerodocumento"  [(ngModel)]="manifiesto.costoTercero_Numerodoc" [disabled]="!manifiesto.costoTercero_Facturado"  placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label  for="grid-last-name">
-                        Costo 
+                        Tercero 
                      </label>
-                       <input type="text" name="costotercero"  [(ngModel)]="manifiesto.costotercero" [disabled]="!manifiesto.costotercero_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                       <input pInputText name="costotercero"  [(ngModel)]="manifiesto.costoTercero" [disabled]="!manifiesto.costoTercero_Facturado"  placeholder="Costo Fluvial(-)" required>
                 </div>
   
   
@@ -228,59 +208,55 @@
 
     <!-- COSTO TERCERO ADICIONAL -->
     <div class="flex flex-nowrap mx-2 mb-6">
-        <label
-        class="k-checkbox-label"
-        [for]="notification"
-        text=""
-      ></label>
-      <p-checkbox type="checkbox"
-           [(ngModel)]="manifiesto.costoterceroadicional_facturado" value="costotercero_facturado"
-           kendoCheckBox />
+   
+      <p-checkbox 
+           [(ngModel)]="manifiesto.costoTerceroAdicional_Facturado" value="costotercero_facturado"
+            />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label  for="grid-last-name">
-                       Fact. Costo Tercero Adicional
+                       Fecha Fact. Costo Tercero Adicional
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.costoterceroadicional_facturado" [disabled]="!manifiesto.costoterceroadicional_facturado" [(ngModel)]="manifiesto.costoterceroadicional_fecha"></p-calendar>
+                    <p-calendar  [disabled]="!manifiesto.costoterceroAdicional_Facturado" [disabled]="!manifiesto.costoterceroadicional_facturado" [(ngModel)]="manifiesto.costoterceroadicional_fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label for="grid-last-name">
                         Doc. Tercero Adicional
                      </label>
-                       <input type="text" name="costoterceroadicionaldocumento"  [(ngModel)]="manifiesto.costoterceroadicional_numerodoc" [disabled]="!manifiesto.costoterceroadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="costoterceroadicionaldocumento"  [(ngModel)]="manifiesto.costoterceroadicional_numerodoc" [disabled]="!manifiesto.costoterceroadicional_facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label  for="grid-last-name">
                         Tercero Adicional 
                      </label>
-                       <input type="text" name="costoterceroadicional"  [(ngModel)]="manifiesto.costoterceroadicional" [disabled]="!manifiesto.costoterceroadicional_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                       <input  pInputText name="costoterceroadicional"  [(ngModel)]="manifiesto.costoterceroadicional" [disabled]="!manifiesto.costoterceroadicional_facturado"   placeholder="Costo Fluvial(-)" required>
                 </div>
   
   
     </div>
   
     <div class="flex flex-nowrap mx-2 mb-6">
-      <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
-           [(ngModel)]="manifiesto.otrosgastos_facturado" 
+      <p-checkbox   value="otrosgastos_facturado"  binary="true"
+           [(ngModel)]="manifiesto.otrosGastos_Facturado" 
             />
   
                 <div class="w-full md:w-1/2 px-3 ">
                     <label  for="grid-last-name">
-                       Facturación Otros Gastos
+                      Fecha Facturación Otros Gastos
                     </label>
-                    <p-calendar  [disabled]="!manifiesto.otrosgastos_facturado" #picker [(ngModel)]="manifiesto.otrosgastos_fecha"></p-calendar>
+                    <p-calendar  [disabled]="!manifiesto.otrosGastos_Facturado" #picker [(ngModel)]="manifiesto.otrosGastos_Fecha"></p-calendar>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label  for="grid-last-name">
                         Documento Otros Gastos
                      </label>
-                       <input type="text" name="otrosgastosdocumento"  [(ngModel)]="manifiesto.otrosgastos_numerodoc" [disabled]="!manifiesto.otrosgastos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                       <input  pInputText name="otrosgastosdocumento"  [(ngModel)]="manifiesto.otrosGastos_Numerodoc" [disabled]="!manifiesto.otrosGastos_Facturado"   placeholder="Número de Documento" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <label  for="grid-last-name">
                         Otros gastos
                      </label>
-                       <input type="text" name="otrosgastos"  [(ngModel)]="manifiesto.otrosgastos" [disabled]="!manifiesto.otrosgastos_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                       <input  pInputText name="otrosgastos"  [(ngModel)]="manifiesto.otrosGastos" [disabled]="!manifiesto.otrosGastos_Facturado"   placeholder="Otros gastos (-)" required>
                 </div>
   
   
@@ -290,26 +266,26 @@
       
     <!-- ALMACENAMIENTO -->
     <div class="flex flex-nowrap mx-2 mb-6">
-        <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
-             [(ngModel)]="manifiesto.otrosgastos3_facturado"/>
+        <p-checkbox   binary="true"  
+             [(ngModel)]="manifiesto.otrosGastos3_Facturado"/>
     
                   <div class="w-full md:w-1/2 px-3 ">
                       <label  for="grid-last-name">
                          Facturación Almacenamiento 
                       </label>
-                      <p-calendar  [disabled]="!manifiesto.almacenamiento_facturado" #picker [(ngModel)]="manifiesto.otrosgastos3_fecha"></p-calendar>
+                      <p-calendar  [disabled]="!manifiesto.otrosGastos3_Facturado" #picker [(ngModel)]="manifiesto.otrosGastos3_Fecha"></p-calendar>
                   </div>
                   <div class="w-full md:w-1/2 px-3">
                       <label  for="grid-last-name">
                           Documento Almacenamiento
                        </label>
-                         <input type="text" name="Almacenamientodocumento"  [(ngModel)]="manifiesto.otrosgastos3_numerodoc" [disabled]="!manifiesto.otrosgastos3_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                         <input  pInputText name="Almacenamientodocumento"  [(ngModel)]="manifiesto.otrosGastos3_Numerodoc" [disabled]="!manifiesto.otrosGastos3_Facturado"   placeholder="Número de Documento" required>
                   </div>
                   <div class="w-full md:w-1/2 px-3">
                       <label  for="grid-last-name">
                         Almacenamiento
                        </label>
-                         <input type="text" name="otrosgastos3"  [(ngModel)]="manifiesto.otrosgastos3" [disabled]="!manifiesto.otrosgastos3_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                         <input  pInputText name="otrosgastos3"  [(ngModel)]="manifiesto.otrosGastos3" [disabled]="!manifiesto.otrosGastos3_Facturado"   placeholder="Almacenamiento (-) " required>
                   </div>
     
     
@@ -318,27 +294,27 @@
 
     <!-- ALMACENAMIENTO ADICIONAL -->
     <div class="flex flex-nowrap mx-2 mb-6">
-        <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
-             [(ngModel)]="manifiesto.otrosgastos2_facturado" 
+        <p-checkbox  binary="true" 
+             [(ngModel)]="manifiesto.otrosGastos2_Facturado" 
               />
     
                   <div class="w-full md:w-1/2 px-3 ">
                       <label  for="grid-last-name">
                          Fact. Almacenamiento Adicional
                       </label>
-                      <p-calendar  [disabled]="!manifiesto.otrosgastos2_facturado" #picker [(ngModel)]="manifiesto.otrosgastos2_fecha"></p-calendar>
+                      <p-calendar  [disabled]="!manifiesto.otroGastos2_Facturado" #picker [(ngModel)]="manifiesto.otrosGastos2_Fecha"></p-calendar>
                   </div>
                   <div class="w-full md:w-1/2 px-3">
                       <label  for="grid-last-name">
                           Doc. Almacenamiento Adicional
                        </label>
-                         <input type="text" name="otrosgastos2documento"  [(ngModel)]="manifiesto.otrosgastos2_numerodoc" [disabled]="!manifiesto.otrosgastos2_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                         <input  pInputText name="otrosgastos2documento"  [(ngModel)]="manifiesto.otrosGastos2_Numerodoc" [disabled]="!manifiesto.otrosGastos2_Facturado"   placeholder="Número de Documento" required>
                   </div>
                   <div class="w-full md:w-1/2 px-3">
                       <label  for="grid-last-name">
                         Almacenamiento Adicional
                        </label>
-                         <input type="text" name="otrosgastos2"  [(ngModel)]="manifiesto.otrosgastos2" [disabled]="!manifiesto.otrosgastos2_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                         <input  pInputText name="otrosgastos2"  [(ngModel)]="manifiesto.otrosGastos2" [disabled]="!manifiesto.otrosGastos2_Facturado"   placeholder="Almacenamiento Adicinal(-)" required>
                   </div>
     
     
@@ -353,27 +329,27 @@
   
       
       <div class="flex flex-nowrap mx-2 mb-6">
-        <p-checkbox   inputId="otrosgastos_facturado"  value="otrosgastos_facturado" 
-             [(ngModel)]="manifiesto.otrosgastos4_facturado" 
+        <p-checkbox   binary="true"
+             [(ngModel)]="manifiesto.otrosGastos4_Facturado" 
               />
     
                   <div class="w-full md:w-1/2 px-3 ">
                       <label  for="grid-last-name">
                          Fact. Poliza resguardo 
                       </label>
-                      <p-calendar  [disabled]="!manifiesto.otrosgastos4_facturado" #picker [(ngModel)]="manifiesto.otrosgastos4_fecha"></p-calendar>
+                      <p-calendar  [disabled]="!manifiesto.otrosGastos4_Facturado" #picker [(ngModel)]="manifiesto.otrosGastos4_Fecha"></p-calendar>
                   </div>
                   <div class="w-full md:w-1/2 px-3">
                       <label  for="grid-last-name">
                           Doc. Poliza resguardo 
                        </label>
-                         <input type="text" name="otrosgastos3documento"  [(ngModel)]="manifiesto.otrosgastos4_numerodoc" [disabled]="!manifiesto.otrosgastos4_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número de Documento" required>
+                         <input  pInputText name="otrosgastos3documento"  [(ngModel)]="manifiesto.otrosGastos4_Numerodoc" [disabled]="!manifiesto.otrosGastos4_Facturado"   placeholder="Número de Documento" required>
                   </div>
                   <div class="w-full md:w-1/2 px-3">
                       <label  for="grid-last-name">
                         Poliza resguardo 
                        </label>
-                         <input type="text" name="otrosgastos3"  [(ngModel)]="manifiesto.otrosgastos4" [disabled]="!manifiesto.otrosgastos4_facturado" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Costo Fluvial(-)" required>
+                         <input  pInputText name="otrosgastos3"  [(ngModel)]="manifiesto.otrosGastos4" [disabled]="!manifiesto.otrosGastos4_Facturado"   placeholder="Poliza (-)" required>
                   </div>
     
     

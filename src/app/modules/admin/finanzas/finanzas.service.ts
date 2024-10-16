@@ -82,13 +82,13 @@ getCentroCostoById(id: string): Observable<Manifiesto>
     return this._httpClient.get<Manifiesto>(this.baseUrl + 'GetCentroCosto?id=' + id  , httpOptions).pipe(
         tap((response: Manifiesto) => {
 
-          response.estiba_fecha = new Date(response.estiba_fecha) ;
+          response.estiba_Fecha = new Date(response.estiba_Fecha) ;
           response.estibaadicional_fecha = new Date(response.estibaadicional_fecha) ;
           response.bejarano_pucallpa_fecha = new Date(response.bejarano_pucallpa_fecha) ;
           response.bejarano_iquitos_fecha = new Date(response.bejarano_iquitos_fecha) ;
           response.oriental_fecha = new Date(response.oriental_fecha) ;
           response.fluvial_fecha = new Date(response.fluvial_fecha) ;
-          response.costotercero_fecha = new Date(response.costotercero_fecha);
+          response.costoTercero_Fecha = new Date(response.costoTercero_Fecha);
           response.otrosgastos_fecha = new Date(response.otrosgastos_fecha);
 
           response.otrosgastos2_fecha = new Date(response.otrosgastos2_fecha);
@@ -205,17 +205,18 @@ updateCentroCosto(centroCosto: Manifiesto): Observable<Manifiesto>
             updatedManifiesto.fluvial_adicional  = 0;
         }
 
+        debugger;
 
 
-        if(updatedManifiesto.costotercero_facturado)
+        if(updatedManifiesto.costoTercero_Facturado)
         {
-            updatedManifiesto.costotercero_fecha =  moment(updatedManifiesto.costotercero_fecha).format('DD/MM/YYYY');
+            updatedManifiesto.costoTercero_Fecha =  moment(updatedManifiesto.costoTercero_Fecha).format('DD/MM/YYYY');
         }
         else
         {
-            updatedManifiesto.costotercero_fecha = null;
-            updatedManifiesto.costotercero_numerodoc  = '';
-            updatedManifiesto.costotercero  = 0;
+            updatedManifiesto.costoTercero_Fecha = null;
+            updatedManifiesto.costoTercero_Numerodoc  = '';
+            //updatedManifiesto.costoTercero  = 0;
         }
 
         if(updatedManifiesto.otrosgastos_facturado)
@@ -234,7 +235,7 @@ updateCentroCosto(centroCosto: Manifiesto): Observable<Manifiesto>
             tap((response) => {
 
                 // Update the notes
-              //  this.getAllManifiestos().subscribe();
+                this.getAllManifiestos().subscribe();
             })
         );
     }

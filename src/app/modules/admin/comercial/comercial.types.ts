@@ -19,7 +19,7 @@ export interface Manifiesto
 
 
     bejaranopucallpa?: number;
-    estiba?: number;
+    Estiba?: number;
     adicionales?: number;
     transbordos?: number;
     otros?: number;
@@ -27,11 +27,11 @@ export interface Manifiesto
     costotercero?: number;
     fluvial?: number;
     oriental?: number;
-    estiba_adicional?: number;
-    otrosgastos?: number;
-    otrosgastos2?: number;
-    otrosgastos3?: number;
-    otrosgastos4?: number;
+    stiba_Adicional?: number;
+    otrosGastos?: number;
+    otrosGastos2?: number;
+    otrosGastos3?: number;
+    otrosGastos4?: number;
     
 
 
@@ -39,7 +39,7 @@ export interface Manifiesto
     adicional_facturado?: boolean;
     retorno_facturado?: boolean;
     sobreestadia_facturado?: boolean;
-    estiba_facturado?: boolean;
+    estiba_Facturado?: boolean;
     costotercero_facturado?: boolean;
     oriental_facturado?: boolean;
     bejaranoiquitos?: boolean;
@@ -58,13 +58,13 @@ export interface Manifiesto
     fecha_adicional_facturado?: Date;
     fecha_sobreestadia_facturado?: Date;
     fecha_retorno_facturado?: Date;
-    estiba_fecha?: Date;
+    estiba_Fecha?: Date;
     estibaadicional_fecha?: Date;
     bejarano_pucallpa_fecha?: Date;
     bejarano_iquitos_fecha?: Date;
     oriental_fecha?: Date;
     fluvial_fecha?: Date;
-    costotercero_fecha?: Date;
+    costoTercero_Fecha?: Date;
     otrosgastos_fecha?: Date;
     otrosgastos2_fecha?: Date;
     otrosgastos3_fecha?: Date;
@@ -106,3 +106,66 @@ export interface Grupo {
     id: any;
     nombre: string;
 }
+
+
+export interface OrdenTransporte {
+    id?: number;
+    numero_ot: string;
+    shipment: string;
+    delivery: string;
+    destinatario: string;
+    remitente: string;
+    por_asignar: boolean;
+    remitente_id: number;
+    destinatario_id: number;
+    factura: string;
+    oc: string;
+    guias: string;
+    cantidad: number;
+    volumen: number;
+    peso: number;
+    tiposervicio_id: number;
+    distrito_carga_id: number;
+    distrito_carga: string;
+    direccion_carga: string;
+    fecha_carga: Date;
+    hora_carga: string;
+    distrito_servicio: string;
+    direccion_destino_servicio: string;
+    fecha_salida: Date;
+    hora_salida: string;
+    fecha_entrega: Date;
+    direccion_entrega: string;
+    provincia_entrega: string;
+    hora_entrega: string;
+    numero_manifiesto: string;
+    tracto: string;
+    carreta: string;
+    chofer: string;
+    usuario_registro: string;
+    estado_id: number;
+    estado: string;
+    lat_entrega: number;
+    lng_entrega: number;
+    nivel_satisfaccion: number;
+    lat: number;
+    lng: number;
+    placa: string;
+    lat_waypoint: number;
+    lng_waypoint: number;
+    orden_entrega: string;
+    nombreCompleto: string;
+    total: number;
+    pendientes: number;
+    pendiente: number;
+    entregados: number;
+}
+
+export interface Incidencia {
+   id: number;
+   incidencia: string;
+   fecha_incidencia: Date;
+   observacion: string;
+   usuario_registro: string ;
+}
+
